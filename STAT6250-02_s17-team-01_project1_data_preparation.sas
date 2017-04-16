@@ -54,7 +54,7 @@
 
 * setup environmental parameters;
 %let inputDatasetURL =
-https://github.com/stat6250/team-1_project1/blob/master/HospInfo.xlsx?raw=true;
+https://github.com/stat6250/team-1_project1/blob/master/HospInfo.xls?raw=true
 
 * load raw Hospital dataset over the wire;
 filename tempfile TEMP;
@@ -67,7 +67,7 @@ run;
 proc import
     file=tempfile
     out=HospInfo_raw
-    dbms=xlsx;
+    dbms=xls;
 run;
 filename tempfile clear;
 
