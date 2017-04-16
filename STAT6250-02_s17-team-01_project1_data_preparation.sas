@@ -67,7 +67,7 @@ run;
 proc import
     file=tempfile
     out=HospInfo_raw
-    dbms=xls;
+    dbms=xlsx;
 run;
 filename tempfile clear;
 
