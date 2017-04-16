@@ -56,7 +56,7 @@
 %let inputDatasetURL =
 https://github.com/stat6250/team-1_project1/blob/master/HospInfo.xlsx?raw=true;
 
-* load raw FRPM dataset over the wire;
+* load raw Hospital dataset over the wire;
 filename tempfile TEMP;
 proc http
     method="get"
