@@ -33,8 +33,23 @@ Methodology: Use PROC MEAN to find the average score of each state's overall rat
 
 Limitations: It does not show the number of hospital counts in each state, so some of the state's hospitals have not ratings available.
 
-Possible Follow-up Steps:
+Possible Follow-up Steps: Use COUNT function to counts the state numbers.
 ;
+
+proc means data=HospInfo_Updated;
+    class Hospital_State;
+    var Hospital_overall_rating;
+    output out=temp;
+run;
+
+proc sort data=temp;
+    by descending Hospital_State;
+run;
+
+proc print noobs data=temp;
+    id Hospital_State;
+    var Hospital_overall_rating;
+run;
 
 
 *
@@ -44,10 +59,25 @@ Rationales: Patient experience is one of the most points that people cares about
 
 Methodology: Use WHERE to find the hospitals which have "below the average" rating, and use COUNT to find which type of hospitals have the most numbers of this rating. 
 
-Limitations: 
+Limitations: The Children type hospitals have a small number of data, so it may not be significant. 
 
-Possible Follow-up Steps:
+Possible Follow-up Steps: Eliminate the Children type, and only analyze the rest of the types.
 ;
+
+proc print data=HospInfo_Updated;
+    var Hospital_Type patient_experience_comparison;
+    where patient_experience_comparison="Below the National average";
+    output out=temp;
+run;
+
+proc sort data=temp;
+    by descending Hospital_Type;
+run;
+
+proc print noobs data=temp;
+    id Hospital_Type;
+    var patient_experience_comparison;
+run;
 
 
 *
@@ -57,7 +87,22 @@ Rationales: Effectiveness of care is one of the most points that people cares ab
 
 Methodology: Use WHERE to find the hospitals which have "below the average" rating, and use COUNT to find which type of hospitals have the most numbers of this rating. 
 
-Limitations:
+Limitations: There are some onwership types which have very few data, so it is not meaningful to analyze them.
 
-Possible Follow-up Steps:
+Possible Follow-up Steps: Eliminate the variables which have very few data.
 ;
+
+proc print data=HospInfo_Updated;
+    var Hospital_Onwership Effectiveness_comparison;
+    where Effectiveness_comparison="Below the National average";
+    output out=temp;
+run;
+
+proc sort data=temp;
+    by descending Hospital_Ownership;
+run;
+
+proc print noobs data=temp;
+    id Hospital_Ownership;
+    var effectiveness_comparison;
+run;
