@@ -21,6 +21,8 @@ columntitles, and adding a tab for label descriptions.
 
 [Data Dictionary]"Data Field Descriptions" in file HospInfo-Updated.xls
 
+[Unique ID Schema]
+
 -Provider ID: Hospital ID
 
 -Hospital Name: Hospital Name
@@ -98,6 +100,7 @@ run;
 * build analytic dataset from FRPM dataset with the least number of columns and
 minimal cleaning/transformation needed to address research questions in
 corresponding data-analysis files;
+;
 data HospInfo_analytic_file;
     retain
         Provider_ID
