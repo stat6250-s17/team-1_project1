@@ -20,9 +20,34 @@ X "cd ""%substr(%sysget(SAS_EXECFILEPATH),1,%eval(%length(%sysget(SAS_EXECFILEPA
 * load external file that generates analytic dataset FRPM1516_analytic_file;
 %include '.\STAT6250-02_s17-team-1_project1_data_preparation.sas';
 
+*
+Research Question 1: what types of  hospital Ownership that has the most "below the national 
+average" in safety ratings?
+Rationales: This will show us what ownership type of hospitals that did not meet the saftey average.
+Methodology: By applying the "WHERE" statemnet, we can get the hospitals that have "below the average" 
+rating. Next, we could utilize the "COUNT" command to know what the type of hospitals that need to improve their safety. 
+Limitations: We may end up analyzing only some of the hospitals because the safety evaluation is 
+not available in all types of hospitals. 
+Possible Follow-up Steps: Eliminate the variables which have very few data.
+;
+proc print data=HospInfo_Updated;
+    var Hospital_Onwership safety_comparison;
+    where safety_comparison="Below the National average";
+    output out=temp;
+run;
+
+proc sort data=temp;
+    by descending Hospital_Ownership;
+run;
+
+proc print noobs data=temp;
+    id Hospital_Ownership;
+    var safety_comparison;
+run;
+
 
 *
-Research Question 1: What are the lowest "below the national average" effectiveness of care ratings in terms of 
+Research Question 2: What are the lowest "below the national average" effectiveness of care ratings in terms of 
 hospital Ownership type ?
 Rationales: It will give us an idea of what type of   hospitals function  effectively.  
 Methodology: in this case, we would use the "WHERE" command to calculate the hospitals that have "below the average" 
@@ -48,9 +73,10 @@ run;
 
 
 *
-Research Question 2: what kind of hospital has the lowest average in terms of the holistic rating?
-Rationales:It will give us  of what type of hospitals function  effectively.  
-Methodology: This will help us find the struggluing hospital ownership type.
+Research Question 3: what kind of hospital has the lowest average in terms of the holistic rating?
+Rationales: This will help us find the struggluing hospital ownership types. 
+Methodology: By using the command “PROC MEAN”, we can find the rating mean. Next, by using “PROC SORT”, 
+we can get the means of temp data. Finally, “PROC PRINT”, to show the result.
 Limitations: the rating values may not exactly be accounted for the ratio for each hospital type.
 Possible Follow-up Steps: 
 ;
@@ -67,26 +93,3 @@ id Hospital_Type;
 Var Hospital_overall_rating;
 run;
 
-*
-Research Question 3: what types of  hospital Ownership that has the most "below the national 
-average" safety ratings?
-Rationales: This will show us what ownership type of hospitals that did not meet the saftey average.
-Methodology: By applying the "WHERE" statemnet, we can get the hospitals that have "below the average" 
-rating. Next, we could utilize the "COUNT" command to know the type  of hospitals that need to improve their safety. 
-Limitations: We may end up analysing only some of the hospitals because the safety evaluation is not available. 
-Possible Follow-up Steps: Eliminate the variables which have very few data.
-;
-proc print data=HospInfo_Updated;
-    var Hospital_Onwership safety_comparison;
-    where safety_comparison="Below the National average";
-    output out=temp;
-run;
-
-proc sort data=temp;
-    by descending Hospital_Ownership;
-run;
-
-proc print noobs data=temp;
-    id Hospital_Ownership;
-    var safety_comparison;
-run;
