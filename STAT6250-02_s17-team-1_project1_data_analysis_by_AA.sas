@@ -1,31 +1,86 @@
 
-
 *******************************************************************************;
+
+*
 This file uses the following analytic dataset to address several research
-questions regarding flight delay in US airports
-Dataset Name: DelayedFlight.csv created in external file
-STAT6250-02_s17-team-02_project1_data_preparation.sas, which is assumed to be
+questions regarding Hospitals ratings and their preformance compared to the 
+national average.
+Dataset Name: HospInfo created in external file
+STAT6250-02_s17-team-1_project1_data_preparation.sas, which is assumed to be
 in the same directory as this file
 See included file for dataset properties
 ;
 
 * environmental setup;
 
+* set relative file import path to current directory (using standard SAS trick;
+X "cd ""%substr(%sysget(SAS_EXECFILEPATH),1,%eval(%length(%sysget(SAS_EXECFILEPATH))-%length(%sysget(SAS_EXECFILENAME))))""";
+
 
 * load external file that generates analytic dataset FRPM1516_analytic_file;
-%include '.\STAT6250-02_s17-team-02_project1_data_preparation.sas';
-*******************************************************************************;
+%include '.\STAT6250-02_s17-team-1_project1_data_preparation.sas';
+
+*
+Research Question 1: what types of  hospital Ownership that has the most "below the national 
+average" in safety ratings?
+Rationales: This will show us what ownership type of hospitals that did not meet the saftey average.
+Methodology: By applying the "WHERE" statemnet, we can get the hospitals that have "below the average" 
+rating. Next, we could utilize the "COUNT" command to know what the type of hospitals that need to improve their safety. 
+Limitations: We may end up analyzing only some of the hospitals because the safety evaluation is 
+not available in all types of hospitals. 
+Possible Follow-up Steps: Eliminate the variables which have very few data.
+;
+proc print data=HospInfo_Updated;
+    var Hospital_Onwership safety_comparison;
+    where safety_comparison="Below the National average";
+    output out=temp;
+run;
+
+proc sort data=temp;
+    by descending Hospital_Ownership;
+run;
+
+proc print noobs data=temp;
+    id Hospital_Ownership;
+    var safety_comparison;
+run;
 
 
-[Research question 1] what kind of hospital has the maximum average in terms of the holistic rating?
+*
+Research Question 2: What are the lowest "below the national average" effectiveness of care ratings in terms of 
+hospital Ownership type ?
+Rationales: It will give us an idea of what type of   hospitals function  effectively.  
+Methodology: in this case, we would use the "WHERE" command to calculate the hospitals that have "below the average" 
+rating, Then , we need to apply the "COUNT" command to find which type of hospitals have the lowest numbers 
+of this rating. 
+Limitations: The ownership types vary and are not proportioned equally.
+Possible Follow-up Steps: 
+;
+proc print data=HospInfo_Updated;
+    var Hospital_Onwership Effectiveness_comparison;
+    where Effectiveness_comparison="Below the National average";
+    output out=temp;
+run;
 
-* Rationale: This will help us find the best hospital ownership type.
-* Methodology: By using the command “PROC MEAN”, we can find the rating mean. Next, by using “PROC SORT”, we can get the means of temp data. Finally, “PROC PRINT”, to show the result.
-* Limitation: the rating values may not exactly be accounted for the ratio for each hospital type.
-* Possible Follow-up steps:
+proc sort data=temp;
+    by descending Hospital_Ownership;
+run;
 
-```SAS
-Proc means data= hospInfo;
+proc print noobs data=temp;
+    id Hospital_Ownership;
+    var effectiveness_comparison;
+run;
+
+
+*
+Research Question 3: what kind of hospital has the lowest average in terms of the holistic rating?
+Rationales: This will help us find the struggluing hospital ownership types. 
+Methodology: By using the command “PROC MEAN”, we can find the rating mean. Next, by using “PROC SORT”, 
+we can get the means of temp data. Finally, “PROC PRINT”, to show the result.
+Limitations: the rating values may not exactly be accounted for the ratio for each hospital type.
+Possible Follow-up Steps: 
+;
+Proc means data= hospInfo_Updated;
 Class Hospital_Type;
 Var Hospital_overall_rating;
 Output out= temp;
@@ -37,51 +92,4 @@ Proc print noods data= temp;
 id Hospital_Type;
 Var Hospital_overall_rating;
 run;
-```
-
-
-[Research question 2] what are the hospitals that show the lowest average rating?
-
-* Rationale: This will lead us to know the hospitals that need care most.
-* Methodology: We can figure that out by applying the command “Where” command and count the least average rating of each hospital and calculate the total. Then, by applying the “PROC SORT” command in descending order, we can arrive at the hospitals that have the lowest national average rating.
-*Limitation: since the dataset contains more than 4000 hospitals, we need to specify where the splitting point is.
-* Possible Follow-up steps:
-
-```SAS
-data= hospInfo;
-Where column = ‘under the national average’;
-run;
-```
-
-# By creating a variable “under the national average” to find the count, we have: #
-
-```SAS
-Proc sort data= temp;
-by descending ‘ under the national average ’;
-run;
-Proc print; 
-
-```
-
-[Research question 3] In what stat is the maximum rating score among hospitals?
-
-* Rationale: This will give us an idea whether the state’s population has an impact on the hospital functionality or not. 
-* Methodology:  By using the “PROC MEAN” command to calculate the mean rating score of every state. Then, by applying the “PROC SORT” command, we can figure which states have the largest rating points. 
-* Limitation: Here, the amount of hospitals of each state is not equal and her, we would not consider how many hospitals in each state is.
-* Possible Follow-up steps:
-
-```SAS
-Proc means data= hospInfo;
-Class State;
-Var Hospital_overall_rating;
-Output out= temp;  
-run;
-Proc sort data= temp;
-by descending State;
-run;
-Proc print noods data= temp;
-id State;
-Var Hospital_overall_rating;
-run;
-```
 
