@@ -104,6 +104,7 @@ data HospInfo_analytic_file;
 		Hospital_Name
 		State
 		Hospital_Type
+		Hospital_Ownership
 		Hospital_overall_rating
 		Mortality_comparison
 		Safety_comparison
@@ -119,6 +120,7 @@ data HospInfo_analytic_file;
 		Hospital_Name
 		State
 		Hospital_Type
+		Hospital_Ownership
 		Hospital_overall_rating
 		Mortality_comparison
 		Safety_comparison
