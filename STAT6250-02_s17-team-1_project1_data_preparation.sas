@@ -21,55 +21,8 @@ columntitles, and adding a tab for label descriptions.
 
 [Data Dictionary]"Data Field Descriptions" in file HospInfo-Updated.xls
 
-[Unique ID Schema]
+[Unique ID Schema] Provider ID is a primary key
 
--Provider ID: Hospital ID
-
--Hospital Name: Hospital Name
-
--Address: Hospital Address
-
--City: City of Hospital
-
--State: State of Hospital
-
--ZIP Code: Zip Code of Hospital
-
--County Name: County of Hospital
-
--Phone Number: Phone number of Hospital
-
--Hospital Type: Category of Hospital
-
--Hospital Ownership: Who owns the hospital (Government or private)
-
--Emergency Services: Does the hospital have emergency services (True or False)
-
--Meets criteria for meaningful use of EHRs: Criteria for Electronic Health 
-Records (True or False)
-
--Hospital overall rating: Rate of Hospital on a scale of 1 to 5.
-
--Mortality national comparison: Comparison of Mortality rate to national 
-average
-
--Safety of care national comparison: Comparison of Safety of Care to national 
-average
-
--Readmission national comparison: Comparison of Readmission to national average
-
--Patient experience national comparison: Comparison of patient experience  to 
-national average
-
--Effectiveness of care national comparison: Comparison of effectiveness of care 
-to national average
-
--Timeliness of care national comparison: comparison of Timeliness of care to 
-national average
-
--Efficient use of medical imaging national comparison: Comparison of efficient 
-use of medical imaging to national average
-;
 
 * setup environmental parameters;
 %let inputDatasetURL =
