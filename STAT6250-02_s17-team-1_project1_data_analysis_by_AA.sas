@@ -94,9 +94,6 @@ proc print data=HospInfo_Updated;
     output out=temp;
 run;
 
-proc sort data=temp;
-    by descending Hospital_Ownership;
-run;
 
 proc print noobs data=temp;
     id Hospital_Ownership;
@@ -132,9 +129,7 @@ Class Hospital_Type;
 Var Hospital_overall_rating;
 Output out= temp;
 run;
-Proc sort data= temp;
-by descending Hospital_Type;
-run;
+
 Proc print noods data= temp;
 id Hospital_Type;
 Var Hospital_overall_rating;
