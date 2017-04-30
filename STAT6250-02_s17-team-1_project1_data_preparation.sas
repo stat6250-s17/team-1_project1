@@ -128,6 +128,9 @@ proc print noobs data=HospInfo_analytic_file_temp(obs=10);
     var Hospital_overall_rating;
 run;
 
+proc sort data=temp;
+    by descending Hospital_Ownership;
+run;
 
 *
 'Research Question: How many hospitals have a 'below the national average' rating for mortality?'
@@ -190,3 +193,6 @@ proc print noobs data=temp;
     var Hospital_overall_rating;
 run;
 
+Proc sort data= temp;
+by descending Hospital_Type;
+run;
