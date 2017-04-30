@@ -21,7 +21,7 @@ See included file for dataset properties
 X "cd ""%substr(%sysget(SAS_EXECFILEPATH),1,%eval(%length(%sysget(SAS_EXECFILEPATH))-%length(%sysget(SAS_EXECFILENAME))))""";
 
 
-* load external file that generates analytic dataset FRPM1516_analytic_file;
+* load external file that generates analytic dataset HospInfo_analytic_file;
 %include '.\STAT6250-02_s17-team-1_project1_data_preparation.sas';
 
 
@@ -57,31 +57,23 @@ run;
 
 
 *
-[Research Question 2] Which Hospitals have the most ‘below the national average’ ratings? 
+[Research Question 2] How many hospitals have a 'below the national average' rating for mortality? 
 
 Rationale: This would allow us to identify the hospitals that need the most support.
 
-Methodology: By using Where function we could see which Hospitals have 'below the national average'
-as a recorded observation. Then we could use another function to count the total below average.
-Next we could use a Proc Sort by descending to find the Hospitals with the most 'below the national average' percentage.
+Methodology: By using proc freq, we can see the number of hospitals that have a below the national 
+average rating and the percentage.
 
-Limitations: There are over 4000 Hospital observations, so we would need to figure out a cut off.
+Limitations: There are hospitals that don't have available data, so the results could be skewed.
 
-Possible Follow-up Steps: Could try formating ranges with a value function.
+Possible Follow-up Steps: could try to subset of hospital type.
 
 ;
 
 proc freq data=HospInfo_analytic_file; 
-where Mortality_comparison="Below the National average"
-    Safety_comparison="Below the National average"
-    Readmission_comparison="Below the National average"
-    Patient_experience_comparison="Below the National average"
-    Effectiveness_comparison="Below the National average"
-    Timeliness_comparison="Below the National average"
-    Efficient_use_of_medical_imaging="Below the National average"
-;
-output out=temp;
+tables Mortality_comparison;
 run;
+
 
 
 *
