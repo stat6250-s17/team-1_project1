@@ -56,7 +56,7 @@ proc print data=HospInfo_Updated;
 run;
 
 proc sort data=temp;
-    by descending Hospital_Ownership;
+    by descending Hospital_Ownership; 
 run;
 
 proc print noobs data=temp;
