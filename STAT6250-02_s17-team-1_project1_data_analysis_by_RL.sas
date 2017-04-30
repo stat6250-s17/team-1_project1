@@ -24,45 +24,47 @@ X "cd ""%substr(%sysget(SAS_EXECFILEPATH),1,%eval(%length(%sysget(SAS_EXECFILEPA
 %include '.\STAT6250-02_s17-team-1_project1_data_preparation.sas';
 
 
+title1
+'Research Question: Which state has the lowest average hospitals overall ratings?'
+;
+
+title2
+'Rationales: It helps us understand that which state needs improve their overall 
+hospitals' experience.'
+;
+
+footnote1
+''
+;
 *
-Research Question: Which state has the lowest average hospitals overall ratings?
-
-Rationales: It helps us understand that which state needs improve their overall 
-hospitals' experience.
-
-Methodology: Use PROC MEAN to find the average score of each state's overall 
-ratings, and use PROC SORT to find the state that has the lowest average 
-ratings.
+Methodology: Use PRINT to print the average overall ratings of each state.
 
 Limitations: It does not show the number of hospital counts in each state, so 
 some of the state's hospitals have not ratings available.
 
 Possible Follow-up Steps: Use COUNT function to counts the state numbers.
 ;
-proc means data=HospInfo_Updated;
-    class Hospital_State;
-    var Hospital_overall_rating;
-    output out=temp;
-run;
-
-proc sort data=temp;
-    by descending Hospital_State;
-run;
-
 proc print noobs data=temp;
     id Hospital_State;
     var Hospital_overall_rating;
 run;
 
 
-*
-Research Question: What type of hospitals have the most "below the national 
-average" patient experience ratings?
+title1
+'Research Question: What type of hospitals have the most "below the national 
+average" patient experience ratings?'
+;
 
-Rationales: Patient experience is one of the most points that people cares 
+title2
+'Rationales: Patient experience is one of the most points that people cares 
 about, so it tells us what type of hospitals needs improve their patient 
-experience.
+experience.'
+;
 
+footnote1
+''
+;
+*
 Methodology: Use WHERE to find the hospitals which have "below the average" 
 rating, and use COUNT to find which type of hospitals have the most numbers 
 of this rating. 
@@ -79,24 +81,27 @@ proc print data=HospInfo_Updated;
     output out=temp;
 run;
 
-proc sort data=temp;
-    by descending Hospital_Type;
-run;
-
 proc print noobs data=temp;
     id Hospital_Type;
     var patient_experience_comparison;
 run;
 
 
-*
-Research Question: Which hospital Ownership has the most "below the national 
-average" effectiveness of care ratings?
+title1
+'Research Question: Which hospital Ownership has the most "below the national 
+average" effectiveness of care ratings?'
+;
 
-Rationales: Effectiveness of care is one of the most points that people cares 
+title2
+'Rationales: Effectiveness of care is one of the most points that people cares 
 about, so it tells us what ownership type of hospitals needs improve their 
-effectiveness of care.
+effectiveness of care.'
+;
 
+footnote1
+''
+;
+*
 Methodology: Use WHERE to find the hospitals which have "below the average" 
 rating, and use COUNT to find which type of hospitals have the most numbers 
 of this rating. 
@@ -110,10 +115,6 @@ proc print data=HospInfo_Updated;
     var Hospital_Onwership Effectiveness_comparison;
     where Effectiveness_comparison="Below the National average";
     output out=temp;
-run;
-
-proc sort data=temp;
-    by descending Hospital_Ownership;
 run;
 
 proc print noobs data=temp;
