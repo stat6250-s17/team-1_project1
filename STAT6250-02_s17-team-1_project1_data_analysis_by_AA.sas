@@ -30,11 +30,12 @@ average" in safety ratings?'
 title2
 'Rationales: This will show us what ownership type of hospitals that did not meet the saftey average.'
 ;
-*
+
 footnote1
 'The result above shows whether each type of hospital ownership obtained the safety requiremnts or not. The SAS code sorted the values 
 based on the (safety_comparison) variable.'
 ;
+
 
 *
 Methodology: By applying the "WHERE" statemnet, we can get the hospitals that have "below the average" 
@@ -71,10 +72,10 @@ title2
 'Rationales: It will give us an idea of what type of hospitals function  effectively.'
 ;
 
-*
 footnote1
 'Based on the above output,  we can find how hospitals are effective by sortin each type of hospital and calcuate their means.'
 ;
+
 *
 Methodology: in this case, we would use the "WHERE" command to calculate the hospitals that have "below the average" 
 rating, Then , we need to apply the "COUNT" command to find which type of hospitals have the lowest numbers 
