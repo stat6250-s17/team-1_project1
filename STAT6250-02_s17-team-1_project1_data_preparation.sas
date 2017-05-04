@@ -128,24 +128,26 @@ by descending Hospital_Type;
 run;
 
 
-*Use MEANS to calculate the average overall rating of every state, and use SORT 
-+to sort the average overall ratings.
+* Use MEANS to calculate the average overall rating of every state, and use SORT 
+to sort the average overall ratings.
 ;
-+proc means data=HospInfo_Updated;
-+    class Hospital_State;
-+    var Hospital_overall_rating;
-+    output out=temp;
-+run;
-+
 
-+* Use SORT to sort the data by the hospital type
+proc means data=HospInfo_Updated;
+ class Hospital_State;
+    var Hospital_overall_rating;
+    output out=temp;
+run;
+
+
+* Use SORT to sort the data by the hospital type.
+
 ;
-+proc sort data=temp;
-+    by descending Hospital_Type;
-+run;
-+
-+
-+*Use SORT to sort the data by the hospital ownership;
+proc sort data=temp;
+    by descending Hospital_Type;
+run;
+
+
+* Use SORT to sort the data by the hospital ownership
 
 ;
 +proc sort data=temp;
