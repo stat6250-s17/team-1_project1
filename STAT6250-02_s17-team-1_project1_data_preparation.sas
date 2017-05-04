@@ -151,7 +151,18 @@ run;
 +
 +*
 +Use SORT to sort the data by the hospital ownership;
+
+;
 +proc sort data=temp;
 +    by descending Hospital_Ownership;
 +run;
+
+* Ussing "proc means" in the data to find the means for Hospital_overall_rating variable.
+
+;
+Proc means data= hospInfo_Updated;
+Class Hospital_Type;
+Var Hospital_overall_rating;
+Output out= temp;
+run;
 
