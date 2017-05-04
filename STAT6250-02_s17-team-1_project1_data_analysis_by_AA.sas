@@ -5,16 +5,15 @@
 
 *
 This file uses the following analytic dataset to address several research
-questions regarding Hospitals ratings and their preformance compared to the 
+questions regarding Hospitals ratings and their performance compared to the
 national average.
 Dataset Name: HospInfo created in external file
-STAT6250-02_s17-team-1_project1_data_preparation.sas, which is assumed to be
+STAT6250-02_s17-team-1_project1_data_preparation.sas, which is assumed to be 
 in the same directory as this file
 See included file for dataset properties
 ;
 
 * environmental setup;
-
 * set relative file import path to current directory (using standard SAS trick;
 X "cd ""%substr(%sysget(SAS_EXECFILEPATH),1,%eval(%length(%sysget(SAS_EXECFILEPATH))-%length(%sysget(SAS_EXECFILENAME))))""";
 
@@ -22,33 +21,31 @@ X "cd ""%substr(%sysget(SAS_EXECFILEPATH),1,%eval(%length(%sysget(SAS_EXECFILEPA
 * load external file that generates analytic dataset FRPM1516_analytic_file;
 %include '.\STAT6250-02_s17-team-1_project1_data_preparation.sas';
 
+
 title1
-'Research Question 1: what types of  hospital Ownership that has the most "below the national 
-average" in safety ratings?
+'Research Question: what types of  hospital Ownership that has the most "below the national 
+average" in safety ratings?'
 ;
 
 title2
-'Rationales: This will show us what ownership type of hospitals that did not meet the saftey average.
+'Rationales: This will show us what ownership type of hospitals that did not meet the saftey average.'
 ;
-
- 
+*
 footnote1
-' The result above shows whether each type of hospital ownership obtained the safety requiremnts or not. The SAS code sorted the values 
-based on the (safety_comparison) variable.
+'The result above shows whether each type of hospital ownership obtained the safety requiremnts or not. The SAS code sorted the values 
+based on the (safety_comparison) variable.'
 ;
 
-footnote1
-' This value can be found under the (safety_comparison) column.
-;
-
-/*
+*
 Methodology: By applying the "WHERE" statemnet, we can get the hospitals that have "below the average" 
 rating. Next, we could utilize the "COUNT" command to know what the type of hospitals that need to improve their safety.
+
 Limitations: We may end up analyzing only some of the hospitals because the safety evaluation is 
-not available in all types of hospitals. 
+not available in all types of hospitals.
+
 Possible Follow-up Steps: Eliminate the variables which have very few data.
-*/
 ;
+
 proc print data=HospInfo_Updated;
     var Hospital_Onwership safety_comparison;
     where safety_comparison="Below the National average";
@@ -64,66 +61,62 @@ proc print noobs data=temp;
     var safety_comparison;
 run;
 
-title;
-footnote;
 
 title1
-'Research Question 2: What are the lowest "below the national average" effectiveness of care ratings in terms of 
-hospital Ownership type ?
+'Research Question: What are the lowest "below the national average" effectiveness of care ratings in terms of 
+hospital Ownership type?'
 ;
 
 title2
-'Rationales: It will give us an idea of what type of hospitals function  effectively.  
+'Rationales: It will give us an idea of what type of hospitals function  effectively.'
 ;
 
+*
 footnote1
-'Based on the above output,  we can find how hospitals are effective by sortin each type of hospital and calcuate their means.;
-
-
-/*
+'Based on the above output,  we can find how hospitals are effective by sortin each type of hospital and calcuate their means.'
+;
+*
 Methodology: in this case, we would use the "WHERE" command to calculate the hospitals that have "below the average" 
 rating, Then , we need to apply the "COUNT" command to find which type of hospitals have the lowest numbers 
 of this rating. 
+
 Limitations: The ownership types vary and are not proportioned equally.
-Possible Follow-up Steps: 
-*/
+
+Possible Follow-up Steps: We may need to redefine some variables.
+
 ;
 proc print data=HospInfo_Updated;
     var Hospital_Onwership Effectiveness_comparison;
     where Effectiveness_comparison="Below the National average";
     output out=temp;
 run;
-
-
 proc print noobs data=temp;
     id Hospital_Ownership;
     var effectiveness_comparison;
 run;
 
-title;
-footnote;
-
 title1
-'Research Question 3: what kind of hospital has the lowest average in terms of the holistic rating?
+'Research Question: what kind of hospital has the lowest average in terms of the holistic rating?'
 ;
 
 title2
-'Rationales: This will help us find the struggluing hospital ownership types. 
+'Rationales: This will help us find the struggluing hospital ownership types.'
 ;
 
+*
 footnote1
-'Based on the above output, SAS gives us the rating order in each of each tyoe of hospital.;
-
-
-
-/*
-Methodology: By using the command “PROC MEAN”, we can find the rating mean. Next, by using “PROC SORT”, 
-we can get the means of temp data. Finally, “PROC PRINT”, to show the result.
-Limitations: the rating values may not exactly be accounted for the ratio for each hospital type.
-*/
-
-Possible Follow-up Steps: 
+'Based on the output, SAS gives us the rating order in each of each tyoe of hospitalwhich is 2.88.'
 ;
+
+*
+Methodology:  By using the command “PROC MEAN”, we can find the rating mean. Next, by using “PROC SORT”, 
+we can get the means of temp data. Finally, “PROC PRINT”.
+
+Limitations: the rating values may not exactly be accounted for the ratio for each hospital type.
+
+Possible Follow-up Steps: We may need to try  rearranging the "hospital type" variable.
+;
+
 Proc means data= hospInfo_Updated;
 Class Hospital_Type;
 Var Hospital_overall_rating;
@@ -134,6 +127,3 @@ Proc print noods data= temp;
 id Hospital_Type;
 Var Hospital_overall_rating;
 run;
-
-title;
-footnote;
