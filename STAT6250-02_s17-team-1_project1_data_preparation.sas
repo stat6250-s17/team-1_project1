@@ -151,8 +151,8 @@ run;
 
 ;
 +proc sort data=temp;
-+    by descending Hospital_Ownership;
-+run;
+   by descending Hospital_Ownership;
+run;
 
 * Ussing "proc means" in the data to find the means for Hospital_overall_rating variable.
 
