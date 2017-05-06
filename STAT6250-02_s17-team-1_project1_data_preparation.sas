@@ -141,6 +141,7 @@ proc means
     output 
     	out=HospInfo_analytic_file_temp
     ;
+
 run;
 
 proc sort 
@@ -190,8 +191,8 @@ run;
 
 *
 Use MEANS to calculate the average overall rating of every state, and use SORT 
-
-to sort the average overall ratings, which will be used as the part of the data anlysis by RL;
+to sort the average overall ratings, which will be used as the part of the 
+data anlysis by RL;
 
 proc means data=HospInfo_Updated;
 
@@ -213,7 +214,8 @@ run;
 
 
 *
-Use SORT to sort the data by the hospital type, which will be used as the part of the data analysis by RL;
+Use SORT to sort the data by the hospital type, which will be used as the
+part of the data analysis by RL;
 
 proc sort data=temp;
 
@@ -223,7 +225,8 @@ run;
 
 
 *
-Use SORT to sort the data by the hospital ownership, which will be used as the part of the data analysis by RL;
+Use SORT to sort the data by the hospital ownership, which will be used as 
+the part of the data analysis by RL;
 
 proc sort data=temp;
 
