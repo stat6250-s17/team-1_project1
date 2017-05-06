@@ -118,21 +118,8 @@ proc sort data=temp(where=(_STAT_="MEAN"));
     by descending Hospital_overall_rating;
 run;
 
-proc print noobs data=temp;
-    id State;
-    var Hospital_overall_rating;
-run;
 
 
-* Use MEANS to calculate the average overall rating of every state, and use SORT 
-to sort the average overall ratings. This will be used as analysis by NL.
-;
-
-proc means data=HospInfo_Updated;
- class Hospital_State;
-    var Hospital_overall_rating;
-    output out=temp;
-run;
 
 
 * Use SORT to sort the data by the hospital type.
