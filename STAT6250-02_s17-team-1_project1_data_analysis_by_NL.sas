@@ -25,19 +25,20 @@ X "cd ""%substr(%sysget(SAS_EXECFILEPATH),1,%eval(%length(%sysget(SAS_EXECFILEPA
 %include '.\STAT6250-02_s17-team-1_project1_data_preparation.sas';
 
 
-*
+title1
 'Research Question: Which Hospital Ownership Type has the highest average of overall rating?'
 ;
-*
+
+title2
 'Rationale: This could let us determine which type of hospital is better.'
 ;
-*
+
 footnote1
 'Based on the output, Voluntary non-profit - Church have the highest overall rating of 2.88.'
 ;
-
-Methodology: Can use PROC means to get the average of overall rating for each Hospital_Ownership Type.
-Also use PROC sort
+*
+Methodology: Use PROC PRINT to print just the first ten observations from
+the temporary dataset created in the corresponding data-prep file.
 
 Limitations: The values will not account for the proportion of each hospital type or the hospitals
 that do not have the available data, which is set to 0.
@@ -47,22 +48,34 @@ type of hospital.
 
 ;
 
-proc print noobs data=HospInfo_analytic_file_temp(obs=10);
-    id Hospital_Ownership;
-    var Hospital_overall_rating;
+proc print 
+        noobs 
+        data=HospInfo_analytic_file_temp(obs=10)
+    ;
+    id
+        Hospital_Ownership
+    ;
+    var 
+        Hospital_overall_rating
+    ;
 run;
+title;
+footnote;
 
 
-*
+
+title1
 'Research Question: How many hospitals have a 'below the national average' rating for mortality?'
 ;
 
+title2
 'Rationale: This would allow us to how well hospitals are doing with keeping patients alive.'
 ;
-*
+
 footnote1
 'based on the output, only 7.09% of hospitals are below the national average for mortality.'
 ;
+
 *
 Methodology: By using proc freq, we can see the number of hospitals that have a below the national 
 average rating and the percentage.
@@ -71,26 +84,33 @@ Limitations: There are hospitals that don't have available data, so the results 
 
 Possible Follow-up Steps: could try to subset of hospital type.
 ;
-
-proc freq data=HospInfo_analytic_file; 
-tables Mortality_comparison;
+proc freq 
+        data=HospInfo_analytic_file
+    ; 
+    tables 
+        Mortality_comparison
+    ;
 run;
+title;
+footnote;
 
 
 
-*
+title1
 'Research Question: Which State has the highest average overall rating of hospitals?'
 ;
 
+title2
 'Rationale: If we compare this to state population size, we might be able to find out if population has 
 an effect on the effectiveness of a hospital.'
 ;
-*
+
 footnote1
 'Based on the output, New Hampshire has the higest overall rating.'
 ;
-Methodology: Use proc means to find the average score of each state and proc sort to find the ones that
-have the highest average.
+
+Methodology: Use PROC PRINT to print just the first ten observations from
+the temporary dataset created in the corresponding data-prep file.
 
 Limitations: Does not take into account porportion of number of hospitals in each state. Data also includes
 US territories.
@@ -98,7 +118,15 @@ US territories.
 Possible Follow-up Steps:Could try to filter out US territories or figure out a ratio.
 ;
 
-proc print noobs data=temp;
-    id State;
-    var Hospital_overall_rating;
+proc print 
+    noobs 
+        data=HospInfo_analytic_file_temp(obs=10);
+    id 
+        State
+    ;
+    var 
+        Hospital_overall_rating
+    ;
 run;
+title;
+footnote;
