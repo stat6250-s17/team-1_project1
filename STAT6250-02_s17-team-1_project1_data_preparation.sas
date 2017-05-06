@@ -213,7 +213,7 @@ proc means
     ;
 
     class 
-    	Hospital_State
+    	State
     ;
     var 
     	Hospital_overall_rating
@@ -227,7 +227,7 @@ proc sort
 	data=temp
     ;
     by 
-    	descending Hospital_State
+    	descending State
     ;
 run;
 
