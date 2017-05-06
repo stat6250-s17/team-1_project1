@@ -139,12 +139,12 @@ proc means
     	Hospital_overall_rating
     ;
     output 
-    	out=temp
+    	out=HospInfo_analytic_file_temp
     ;
 run;
 
 proc sort 
-	data=temp(where=(_STAT_="MEAN"))
+	data=HospInfo_analytic_file_temp(where=(_STAT_="MEAN"))
     ;
     by
     	descending Hospital_overall_rating
