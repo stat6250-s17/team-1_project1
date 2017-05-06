@@ -36,6 +36,7 @@ title2
 footnote1
 'Based on the output, Voluntary non-profit - Church have the highest overall rating of 2.88.'
 ;
+
 *
 Methodology: Use PROC PRINT to print just the first ten observations from
 the temporary dataset created in the corresponding data-prep file.
@@ -45,7 +46,6 @@ that do not have the available data, which is set to 0.
 
 Possible Follow-up Steps: Try a count function for number of each hospital type and compare 0s of each
 type of hospital.
-
 ;
 
 proc print 
@@ -84,6 +84,7 @@ Limitations: There are hospitals that don't have available data, so the results 
 
 Possible Follow-up Steps: could try to subset of hospital type.
 ;
+
 proc freq 
         data=HospInfo_analytic_file
     ; 
@@ -109,6 +110,7 @@ footnote1
 'Based on the output, New Hampshire has the higest overall rating.'
 ;
 
+*
 Methodology: Use PROC PRINT to print just the first ten observations from
 the temporary dataset created in the corresponding data-prep file.
 
