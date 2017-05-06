@@ -208,44 +208,51 @@ to sort the average overall ratings, which will be used as the part of the
 data anlysis by RL
 ;
 
-proc means data=HospInfo_Updated;
+proc means 
+	data=HospInfo_Updated
+    ;
 
-    class Hospital_State;
-
-    var Hospital_overall_rating;
-
-    output out=temp;
-
+    class 
+    	Hospital_State
+    ;
+    var 
+    	Hospital_overall_rating
+    ;
+    output 
+    	out=temp
+    ;
 run;
 
-
-
-proc sort data=temp;
-
-    by descending Hospital_State;
-
+proc sort 
+	data=temp
+    ;
+    by 
+    	descending Hospital_State
+    ;
 run;
-
 
 *
 Use SORT to sort the data by the hospital type, which will be used as the
 part of the data analysis by RL
 ;
 
-proc sort data=temp;
-
-    by descending Hospital_Type;
-
+proc sort 
+	data=temp
+    ;
+    by 
+    	descending Hospital_Type
+    ;
 run;
-
 
 *
 Use SORT to sort the data by the hospital ownership, which will be used as 
 the part of the data analysis by RL
 ;
 
-proc sort data=temp;
-
-    by descending Hospital_Ownership;
-
+proc sort 
+	data=temp
+    ;
+    by 
+    	descending Hospital_Ownership
+    ;
 run;
