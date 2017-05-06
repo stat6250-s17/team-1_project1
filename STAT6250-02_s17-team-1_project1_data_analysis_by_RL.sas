@@ -1,4 +1,4 @@
-*******************************************************************************;
+tit*******************************************************************************;
 **************** 80-character banner for column width reference ***************;
 * (set window width to banner width to calibrate line length to 80 characters *;
 *******************************************************************************;
@@ -48,6 +48,8 @@ proc print noobs data=temp;
     id Hospital_State;
     var Hospital_overall_rating;
 run;
+title;
+footnote;
 
 
 title1
@@ -85,6 +87,8 @@ proc print noobs data=temp;
     id Hospital_Type;
     var patient_experience_comparison;
 run;
+title;
+footnote;
 
 
 title1
@@ -121,3 +125,5 @@ proc print noobs data=temp;
     id Hospital_Ownership;
     var effectiveness_comparison;
 run;
+title;
+footnote;
