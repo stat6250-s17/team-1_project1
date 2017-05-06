@@ -34,7 +34,8 @@ hospitals' experience.'
 ;
 
 footnote1
-''
+'Based on the ouput, The state PR(Puerto Rico) has lowest hospitals over 
+tatings which is0.365(rounded).'
 ;
 *
 Methodology: Use PRINT to print the average overall ratings of each state.
@@ -64,7 +65,8 @@ experience.'
 ;
 
 footnote1
-''
+'Based on the output, Acute Care Hospitals type of hostpitals have the 
+most "below the national average" patient experience ratings.'
 ;
 *
 Methodology: Use WHERE to find the hospitals which have "below the average" 
@@ -103,7 +105,8 @@ effectiveness of care.'
 ;
 
 footnote1
-''
+'Based on the output, Voluntary non-profit-Private has the most "below the 
+national average" effectiveness of care ratings.'
 ;
 *
 Methodology: Use WHERE to find the hospitals which have "below the average" 
