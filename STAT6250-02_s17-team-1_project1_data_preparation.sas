@@ -63,8 +63,9 @@ run;
 
 * build analytic dataset from FRPM dataset with the least number of columns and
 minimal cleaning/transformation needed to address research questions in
-corresponding data-analysis files;
+corresponding data-analysis files
 ;
+
 data HospInfo_analytic_file;
     retain
     	Provider_ID
@@ -99,10 +100,12 @@ data HospInfo_analytic_file;
     set HospInfo_raw;
 run;
 
-* Use proc means to compute the mean rating of hospital_ownership type
-and use proc sort  of hospital_rating to order ratings from high to low. 
-This will be used as analysis by NL.
+* 
+Use proc means to compute the mean rating of hospital_ownership type
+and use proc sort  of hospital_rating to order ratings from high to low,
+which will be used as the part of the data anlysis by NL
 ;
+
 proc means 
 	data=HospInfo_analytic_file
     ;
@@ -125,10 +128,12 @@ proc sort
     ;
 run;
 
-*Use proc means to compute the mean rating of each state
-and use proc sort  of hospital_rating to order ratings from high to low. 
-This will be used as analysis by NL.
+*
+Use proc means to compute the mean rating of each state
+and use proc sort  of hospital_rating to order ratings from high to low,
+which will be used as the part of the data anlysis by NL
 ;
+
 proc means 
 	data=HospInfo_analytic_file
     ;
@@ -152,8 +157,11 @@ proc sort
     ;
 run;
 
-* Use SORT to sort the data by the hospital type.
+* 
+Use SORT to sort the data by the hospital type,which will 
+be used as the part of the data anlysis by AA
 ;
+
 proc sort 
 	data=temp
     ;
@@ -162,8 +170,10 @@ proc sort
     ;
 run;
 
-* Use SORT to sort the data by the hospital ownership
+* Use SORT to sort the data by the hospital ownership,which will 
+be used as the part of the data anlysis by AA
 ;
+
 proc sort 
 	data=temp
     ;
@@ -172,8 +182,11 @@ proc sort
     ;
 run;
 
-* Ussing "proc means" in the data to find the means for Hospital_overall_rating variable.
+* 
+Using "proc means" in the data to find the means for Hospital_overall_rating
+variable, which will be used as the part of the data anlysis by AA
 ;
+
 Proc means 
 	data= hospInfo_Updated
     ;
@@ -192,7 +205,8 @@ run;
 *
 Use MEANS to calculate the average overall rating of every state, and use SORT 
 to sort the average overall ratings, which will be used as the part of the 
-data anlysis by RL;
+data anlysis by RL
+;
 
 proc means data=HospInfo_Updated;
 
@@ -215,7 +229,8 @@ run;
 
 *
 Use SORT to sort the data by the hospital type, which will be used as the
-part of the data analysis by RL;
+part of the data analysis by RL
+;
 
 proc sort data=temp;
 
@@ -226,7 +241,8 @@ run;
 
 *
 Use SORT to sort the data by the hospital ownership, which will be used as 
-the part of the data analysis by RL;
+the part of the data analysis by RL
+;
 
 proc sort data=temp;
 
