@@ -54,9 +54,10 @@ run;
 minimal cleaning/transformation needed to address research questions in
 corresponding data-analysis files;
 ;
-data HospInfo_analytic_file;
+data HospInfo_analytic_file
+    ;
     retain
-        Provider_ID
+    	Provider_ID
 		Hospital_Name
 		State
 		Hospital_Type
@@ -69,7 +70,6 @@ data HospInfo_analytic_file;
 		Effectiveness_comparison
 		Timeliness_comparison
 		Efficient_use_of_medical_imaging
-
     ;
     keep
         Provider_ID
@@ -86,8 +86,10 @@ data HospInfo_analytic_file;
 		Timeliness_comparison
 		Efficient_use_of_medical_imaging
     ;
-    set HospInfo_raw;
-run;
+    set HospInfo_raw
+    ;
+    run
+    ;
 
 * Use proc means to compute the mean rating of hospital_ownership type
 and use proc sort  of hospital_rating to order ratings from high to low. 
