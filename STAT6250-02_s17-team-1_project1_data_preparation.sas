@@ -93,14 +93,26 @@ run;
 and use proc sort  of hospital_rating to order ratings from high to low. 
 This will be used as analysis by NL.
 ;
-proc means data=HospInfo_analytic_file;
-class Hospital_Ownership;
-var Hospital_overall_rating;
-output out=HospInfo_analytic_file_temp;
+proc means 
+	data=HospInfo_analytic_file
+    ;
+    class 
+    	Hospital_Ownership
+    ;
+    var 
+    	Hospital_overall_rating
+    ;
+    output 
+    	out=HospInfo_analytic_file_temp
+    ;
 run;
 
-proc sort data=HospInfo_analytic_file_temp(where=(_STAT_="MEAN"));
-    by descending Hospital_overall_rating;
+proc sort 
+	data=HospInfo_analytic_file_temp(where=(_STAT_="MEAN"))
+    ;
+    by 
+    	descending Hospital_overall_rating
+    ;
 run;
 
 *Use proc means to compute the mean rating of each state
@@ -108,16 +120,28 @@ and use proc sort  of hospital_rating to order ratings from high to low.
 This will be used as analysis by NL.
 ;
 
-proc means data=HospInfo_analytic_file;
-    class State;
-    var Hospital_overall_rating;
-    output out=temp;
+proc means 
+	data=HospInfo_analytic_file
+    ;
+    class 
+    	State
+    ;
+    var 
+    	Hospital_overall_rating
+    ;
+    output 
+    	out=temp
+    ;
 run;
 
-proc sort data=temp(where=(_STAT_="MEAN"));
-    by descending Hospital_overall_rating;
+proc sort 
+	data=temp(where=(_STAT_="MEAN"))
+    ;
+    by
+    	descending Hospital_overall_rating
+    ;
 run;
-
+______(EXAMPLE BREAK, DELETE AFTER PROFESSOR CHECK)
 
 
 
