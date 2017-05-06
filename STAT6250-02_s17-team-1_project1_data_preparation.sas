@@ -22,33 +22,44 @@ columntitles, and adding a tab for label descriptions.
 [Data Dictionary]"Data Field Descriptions" in file HospInfo-Updated.xls
 
 [Unique ID Schema] Provider ID is a primary key
+;
 
+* environmental setup;
 
 * setup environmental parameters;
 %let inputDatasetURL =
 https://github.com/stat6250/team-1_project1/blob/master/HospInfo-Updated.xls?raw=true
 ;
 
+
 * load raw Hospital dataset over the wire;
 filename tempfile TEMP;
 proc http
-
-    method="get"
-    url="&inputDatasetURL"
-    out=tempfile
+	method="get"
+    	url="&inputDatasetURL"
+    	out=tempfile
     ;
 run;
 proc import
-    file=tempfile
-    out=HospInfo_raw
-    dbms=xls;
+    	file=tempfile
+    	out=HospInfo_raw
+    	dbms=xls
+    ;
 run;
 filename tempfile clear;
 
 * check raw Hospital dataset for duplicates with respect to its composite key;
-proc sort nodupkey data=HospInfo_raw dupout=HospInfo_raw_dups out=_null_;
-    by Provider_ID;
+proc sort 
+	nodupkey 
+	data=HospInfo_raw 
+	dupout=HospInfo_raw_dups 
+	out=_null_
+    ;
+    by 
+    	Provider_ID
+    ;
 run;
+
 
 * build analytic dataset from FRPM dataset with the least number of columns and
 minimal cleaning/transformation needed to address research questions in
@@ -56,7 +67,7 @@ corresponding data-analysis files;
 ;
 data HospInfo_analytic_file;
     retain
-        Provider_ID
+    	Provider_ID
 		Hospital_Name
 		State
 		Hospital_Type
@@ -69,7 +80,6 @@ data HospInfo_analytic_file;
 		Effectiveness_comparison
 		Timeliness_comparison
 		Efficient_use_of_medical_imaging
-
     ;
     keep
         Provider_ID
@@ -119,7 +129,6 @@ run;
 and use proc sort  of hospital_rating to order ratings from high to low. 
 This will be used as analysis by NL.
 ;
-
 proc means 
 	data=HospInfo_analytic_file
     ;
@@ -141,32 +150,40 @@ proc sort
     	descending Hospital_overall_rating
     ;
 run;
-______(EXAMPLE BREAK, DELETE AFTER PROFESSOR CHECK)
-
-
-
 
 * Use SORT to sort the data by the hospital type.
-
 ;
-proc sort data=temp;
-    by descending Hospital_Type;
+proc sort 
+	data=temp
+    ;
+    by 
+    	descending Hospital_Type
+    ;
 run;
 
-
 * Use SORT to sort the data by the hospital ownership
-
 ;
-+proc sort data=temp;
-   by descending Hospital_Ownership;
+proc sort 
+	data=temp
+    ;
+    by 
+    	descending Hospital_Ownership
+    ;
 run;
 
 * Ussing "proc means" in the data to find the means for Hospital_overall_rating variable.
-
 ;
-Proc means data= hospInfo_Updated;
-Class Hospital_Type;
-Var Hospital_overall_rating;
-Output out= temp;
+Proc means 
+	data= hospInfo_Updated
+    ;
+    Class 
+    	Hospital_Type
+    ;
+    Var 
+   	Hospital_overall_rating
+    ;
+    Output 
+    	out= temp
+    ;
 run;
 
