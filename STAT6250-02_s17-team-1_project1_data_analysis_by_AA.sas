@@ -53,9 +53,7 @@ proc print data=HospInfo_Updated;
     output out=temp;
 run;
 
-proc sort data=temp;
-    by descending Hospital_Ownership; 
-run;
+
 
 proc print noobs data=temp;
     id Hospital_Ownership;
@@ -118,11 +116,6 @@ Limitations: the rating values may not exactly be accounted for the ratio for ea
 Possible Follow-up Steps: We may need to try  rearranging the "hospital type" variable.
 ;
 
-Proc means data= hospInfo_Updated;
-Class Hospital_Type;
-Var Hospital_overall_rating;
-Output out= temp;
-run;
 
 Proc print noods data= temp;
 id Hospital_Type;
