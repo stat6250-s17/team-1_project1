@@ -158,8 +158,8 @@ proc sort
 run;
 
 * 
-Use SORT to sort the data by the hospital type,which will 
-be used as the part of the data anlysis by AA
+Use PROC SORT to sort the data by the hospital type to calculate  the hospital types that have "below the average" 
+rating the ,which will be used as the part of the data anlysis by AA
 ;
 
 proc sort 
@@ -170,8 +170,8 @@ proc sort
     ;
 run;
 
-* Use SORT to sort the data by the hospital ownership,which will 
-be used as the part of the data anlysis by AA
+* Use PROC SORT to sort the data by the hospital ownership in order to  what the type of hospitals that need to 
+improve their safety,which will be used as the part of the data anlysis by AA
 ;
 
 proc sort 
@@ -183,7 +183,7 @@ proc sort
 run;
 
 * 
-Using "proc means" in the data to find the means for Hospital_overall_rating
+Using "PROC MEANS" in the data to find the means for Hospital_overall_rating
 variable, which will be used as the part of the data anlysis by AA
 ;
 
@@ -200,7 +200,7 @@ Proc means
     	out= temp
     ;
 run;
-
+ 
 
 *
 Use MEANS to calculate the average overall rating of every state, and use SORT 
@@ -209,7 +209,7 @@ data anlysis by RL
 ;
 
 proc means 
-	data=HospInfo-Updated
+	data=HospInfo_Updated
     ;
 
     class 
@@ -236,13 +236,6 @@ Use SORT to sort the data by the hospital type, which will be used as the
 part of the data analysis by RL
 ;
 
-data Work.temp;
-        set data=HospInfo-Updated
-    ;
-        where Patient_experience_comparison="Below the National average"
-    ;
-run; 
-
 proc sort 
 	data=temp
     ;
@@ -255,13 +248,6 @@ run;
 Use SORT to sort the data by the hospital ownership, which will be used as 
 the part of the data analysis by RL
 ;
-
-data Work.temp;
-	set data=HospInfo-Updated
-    ;
-        where Effectiveness_comparison="Below the National average"
-    ;
-run;
 
 proc sort 
 	data=temp
