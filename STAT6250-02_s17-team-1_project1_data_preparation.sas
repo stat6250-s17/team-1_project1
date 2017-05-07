@@ -209,7 +209,7 @@ data anlysis by RL
 ;
 
 proc means 
-	data=HospInfo_Updated
+	data=HospInfo-Updated
     ;
 
     class 
@@ -236,6 +236,13 @@ Use SORT to sort the data by the hospital type, which will be used as the
 part of the data analysis by RL
 ;
 
+data Work.temp;
+        set data=HospInfo-Updated
+    ;
+        where Patient_experience_comparison="Below the National average"
+    ;
+run; 
+
 proc sort 
 	data=temp
     ;
@@ -248,6 +255,13 @@ run;
 Use SORT to sort the data by the hospital ownership, which will be used as 
 the part of the data analysis by RL
 ;
+
+data Work.temp;
+	set data=HospInfo-Updated
+    ;
+        where Effectiveness_comparison="Below the National average"
+    ;
+run;
 
 proc sort 
 	data=temp
