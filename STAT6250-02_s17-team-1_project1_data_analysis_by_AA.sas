@@ -53,10 +53,12 @@ proc print data=HospInfo_Updated;
     output out=temp;
 run;
 
+
 proc print noobs data=temp;
     id Hospital_Ownership;
     var safety_comparison;
 run;
+
 
 
 title1
@@ -64,9 +66,11 @@ title1
 hospital Ownership type?'
 ;
 
+
 title2
 'Rationales: It will give us an idea of what type of hospitals function  effectively.'
 ;
+
 
 footnote1
 'Based on the above output,  we can find how hospitals are effective by sortin each type of hospital and calcuate their means.'
@@ -81,29 +85,35 @@ Limitations: The ownership types vary and are not proportioned equally.
 
 Possible Follow-up Steps: We may need to redefine some variables.
 
+
 ;
 proc print data=HospInfo_Updated;
     var Hospital_Onwership Effectiveness_comparison;
     where Effectiveness_comparison="Below the National average";
     output out=temp;
 run;
+
 proc print noobs data=temp;
     id Hospital_Ownership;
     var effectiveness_comparison;
 run;
 
+
 title1
 'Research Question: what kind of hospital has the lowest average in terms of the holistic rating?'
 ;
+
 
 title2
 'Rationales: This will help us find the struggluing hospital ownership types.'
 ;
 
+
 *
 footnote1
 'Based on the output, SAS gives us the rating order in each of each tyoe of hospitalwhich is 2.88.'
 ;
+
 
 *
 Methodology:  By using “PROC PRINT” statement, we can show the overall hospital rating which will help us find  the lowest average  .
