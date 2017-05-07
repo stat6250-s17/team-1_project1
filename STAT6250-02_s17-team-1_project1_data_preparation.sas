@@ -219,12 +219,12 @@ proc means
     	Hospital_overall_rating
     ;
     output 
-    	out=temp
+    	out=HospInfo_analytic_file_temp
     ;
 run;
 
 proc sort 
-	data=temp
+	data=HospInfo_analytic_file_temp
     ;
     by 
     	descending State
@@ -237,7 +237,7 @@ part of the data analysis by RL
 ;
 
 proc sort 
-	data=temp
+	data=HospInfo_analytic_file_temp
     ;
     by 
     	descending Hospital_Type
@@ -250,7 +250,7 @@ the part of the data analysis by RL
 ;
 
 proc sort 
-	data=temp
+	data=HospInfo_analytic_file_temp
     ;
     by 
     	descending Hospital_Ownership
