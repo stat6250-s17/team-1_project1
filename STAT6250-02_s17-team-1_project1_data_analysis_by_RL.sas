@@ -16,11 +16,11 @@ See included file for dataset properties
 ;
 
 * environmental setup;
-* set relative file import path to current directory (using standard SAS trick;
+* set relative file import path to current directory (using standard SAS trick);
 X "cd ""%substr(%sysget(SAS_EXECFILEPATH),1,%eval(%length(%sysget(SAS_EXECFILEPATH))-%length(%sysget(SAS_EXECFILENAME))))""";
 
 
-* load external file that generates analytic dataset FRPM1516_analytic_file;
+* load external file that generates analytic dataset HospInfo_analytic_file;
 %include '.\STAT6250-02_s17-team-1_project1_data_preparation.sas';
 
 
@@ -30,7 +30,7 @@ title1
 
 title2
 'Rationales: It helps us understand that which state needs improve their overall 
-hospitals' experience.'
+hospitals experience.'
 ;
 
 footnote1
@@ -45,7 +45,7 @@ some of the state's hospitals have not ratings available.
 
 Possible Follow-up Steps: Use COUNT function to counts the state numbers.
 ;
-proc print noobs data=temp;
+proc print noobs data=HospInfo_analytic_file_temp;
     id State;
     var Hospital_overall_rating;
 run;
@@ -79,7 +79,7 @@ may not be significant.
 Possible Follow-up Steps: Eliminate the Children type, and only analyze the 
 rest of the types.
 ;
-proc print noobs data=temp;
+proc print noobs data=HospInfo_analytic_file_temp;
     id Hospital_Type;
     var Patient_experience_comparison;
 run;
@@ -112,7 +112,7 @@ is not meaningful to analyze them.
 
 Possible Follow-up Steps: Eliminate the variables which have very few data.
 ;
-proc print noobs data=temp;
+proc print noobs data=HospInfo_analytic_file_temp;
     id Hospital_Ownership;
     var Effectiveness_comparison;
 run;
