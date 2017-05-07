@@ -158,7 +158,7 @@ proc sort
 run;
 
 * 
-Use PROC SORT to sort the data by the hospital type to calculate  the hospital types that have "below the average" 
+Use proc sort  to sort the data by the hospital type to calculate  the hospital types that have "below the average" 
 rating the ,which will be used as the part of the data anlysis by AA
 ;
 
@@ -170,7 +170,7 @@ proc sort
     ;
 run;
 
-* Use PROC SORT to sort the data by the hospital ownership in order to  what the type of hospitals that need to 
+* Use proc sort to sort the data by the hospital ownership in order to  what the type of hospitals that need to 
 improve their safety,which will be used as the part of the data anlysis by AA
 ;
 
@@ -183,7 +183,7 @@ proc sort
 run;
 
 * 
-Using "PROC MEANS" in the data to find the means for Hospital_overall_rating
+Using proc means in the data to find the means for Hospital_overall_rating
 variable, which will be used as the part of the data anlysis by AA
 ;
 
