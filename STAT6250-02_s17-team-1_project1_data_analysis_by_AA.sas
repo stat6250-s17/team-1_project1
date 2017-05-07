@@ -7,9 +7,11 @@
 This file uses the following analytic dataset to address several research
 questions regarding Hospitals ratings and their preformance compared to the 
 national average.
+
 Dataset Name: HospInfo_analytic_file created in external file
 STAT6250-02_s17-team-1_project1_data_preparation.sas, which is assumed to be
 in the same directory as this file
+
 See included file for dataset properties
 ;
 
@@ -45,6 +47,7 @@ not available in all types of hospitals.
 
 Possible Follow-up Steps: Eliminate the variables which have very few data.
 ;
+
 proc print data=HospInfo_Updated;
     var Hospital_Onwership safety_comparison;
     where safety_comparison="Below the National average";
@@ -80,6 +83,7 @@ Limitations: The ownership types vary and are not proportioned equally.
 
 Possible Follow-up Steps: We may need to redefine some variables.
 ;
+
 proc print data=HospInfo_Updated;
     var Hospital_Onwership Effectiveness_comparison;
     where Effectiveness_comparison="Below the National average";
@@ -112,6 +116,7 @@ Limitations: the rating values may not exactly be accounted for the ratio for ea
 
 Possible Follow-up Steps: We may need to try  rearranging the "Hospital_Type" variable.
 ;
+
 Proc print noods data= temp;
 id Hospital_Type;
 Var Hospital_overall_rating;
