@@ -58,7 +58,8 @@ proc print noobs data=temp;
     id Hospital_Ownership;
     var safety_comparison;
 run;
-
+title;
+footnote;
 
 
 title1
@@ -97,6 +98,8 @@ proc print noobs data=temp;
     id Hospital_Ownership;
     var effectiveness_comparison;
 run;
+title;
+footnote;
 
 
 title1
@@ -109,7 +112,6 @@ title2
 ;
 
 
-*
 footnote1
 'Based on the output, SAS gives us the rating order in each of each tyoe of hospitalwhich is 2.88.'
 ;
@@ -128,3 +130,5 @@ Proc print noods data= temp;
 id Hospital_Type;
 Var Hospital_overall_rating;
 run;
+title;
+footnote;
