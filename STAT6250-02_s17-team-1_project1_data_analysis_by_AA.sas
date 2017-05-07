@@ -86,7 +86,6 @@ Limitations: The ownership types vary and are not proportioned equally.
 
 Possible Follow-up Steps: We may need to redefine some variables.
 
-
 ;
 proc print data=HospInfo_Updated;
     var Hospital_Onwership Effectiveness_comparison;
@@ -124,7 +123,6 @@ Limitations: the rating values may not exactly be accounted for the ratio for ea
 
 Possible Follow-up Steps: We may need to try  rearranging the "Hospital_Type" variable.
 ;
-
 
 Proc print noods data= temp;
 id Hospital_Type;
