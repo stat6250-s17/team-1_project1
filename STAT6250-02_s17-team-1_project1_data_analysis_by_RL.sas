@@ -29,13 +29,11 @@ title1
 ;
 
 title2
-'Rationales: It helps us understand that which state needs improve their overall 
-hospitals experience.'
+'Rationales: It helps us understand that which state needs improve their overall hospitals experience.'
 ;
 
 footnote1
-'Based on the ouput, The state PR(Puerto Rico) has lowest hospitals over 
-tatings which is0.365(rounded).'
+'Based on the ouput, The state PR(Puerto Rico) has lowest hospitals over tatings which is0.365(rounded).'
 ;
 *
 Methodology: Use PRINT to print the average overall ratings of each state.
@@ -54,19 +52,15 @@ footnote;
 
 
 title1
-'Research Question: What type of hospitals have the most "below the national 
-average" patient experience ratings?'
+'Research Question: What type of hospitals have the most "below the national average" patient experience ratings?'
 ;
 
 title2
-'Rationales: Patient experience is one of the most points that people cares 
-about, so it tells us what type of hospitals needs improve their patient 
-experience.'
+'Rationales: Patient experience is one of the most points that people cares about, so it tells us what type of hospitals needs improve their patient experience.'
 ;
 
 footnote1
-'Based on the output, Acute Care Hospitals type of hostpitals have the 
-most "below the national average" patient experience ratings.'
+'Based on the output, Acute Care Hospitals type of hostpitals have the most "below the national average" patient experience ratings.'
 ;
 *
 Methodology: Use WHERE to find the hospitals which have "below the average" 
@@ -88,19 +82,15 @@ footnote;
 
 
 title1
-'Research Question: Which hospital Ownership has the most "below the national 
-average" effectiveness of care ratings?'
+'Research Question: Which hospital Ownership has the most "below the national average" effectiveness of care ratings?'
 ;
 
 title2
-'Rationales: Effectiveness of care is one of the most points that people cares 
-about, so it tells us what ownership type of hospitals needs improve their 
-effectiveness of care.'
+'Rationales: Effectiveness of care is one of the most points that people cares about, so it tells us what ownership type of hospitals needs improve their effectiveness of care.'
 ;
 
 footnote1
-'Based on the output, Voluntary non-profit-Private has the most "below the 
-national average" effectiveness of care ratings.'
+'Based on the output, Voluntary non-profit-Private has the most "below the national average" effectiveness of care ratings.'
 ;
 *
 Methodology: Use WHERE to find the hospitals which have "below the average" 
