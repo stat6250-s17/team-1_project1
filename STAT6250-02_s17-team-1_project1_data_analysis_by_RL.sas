@@ -35,6 +35,14 @@ title2
 footnote1
 'Based on the ouput, The state PR(Puerto Rico) has lowest hospitals over tatings which is0.365(rounded).'
 ;
+
+footnote2
+'There are some states which have zero data or very data, and it is not possible to say a state which has zero overall rating is the worst state because there is no data.'
+;
+
+footnote3
+'Additionally, it is meaningless to compare two states with two different observation numbers; therefore, more data are needed to make significant comparison.'
+;
 *
 Methodology: Use PRINT to print the average overall ratings of each state.
 
@@ -43,9 +51,12 @@ some of the state's hospitals have not ratings available.
 
 Possible Follow-up Steps: Use COUNT function to counts the state numbers.
 ;
-proc print noobs data=HospInfo_analytic_file_temp2;
-    id State;
-    var Hospital_overall_rating;
+proc summary data=HospInfo_analytic_file_temp1
+    print;
+	var Hospital_overall_rating;
+	class State;
+	output out=HospInfo_analytic_file_temp2
+	    mean=AvgRating;
 run;
 title;
 footnote;
@@ -60,7 +71,15 @@ title2
 ;
 
 footnote1
-'Based on the output, Acute Care Hospitals type of hostpitals have the most "below the national average" patient experience ratings.'
+'Based on the output, Acute Care Hospitals type of hospitals have the most "below the national average" patient experience ratings.'
+;
+
+footnote2
+'Acute care hospitals do need to imrpvoe their patient experience; however, it is still not accurate to make this conclusion becasue the total number of observations are still small.'
+;
+
+footnote3
+'Patient experience is also very hard to judge because everybody has different criteria about this.'
 ;
 *
 Methodology: Use WHERE to find the hospitals which have "below the average" 
@@ -73,9 +92,9 @@ may not be significant.
 Possible Follow-up Steps: Eliminate the Children type, and only analyze the 
 rest of the types.
 ;
-proc print noobs data=HospInfo_analytic_file_temp1;
-    id Hospital_Type;
-    var Patient_experience_comparison;
+proc freq data=HospInfo_analytic_file_temp1;
+    where Patient_experience_comparison='Below the National average';
+	tables Hospital_Type;
 run;
 title;
 footnote;
@@ -92,6 +111,14 @@ title2
 footnote1
 'Based on the output, Voluntary non-profit-Private has the most "below the national average" effectiveness of care ratings.'
 ;
+
+footnote2
+'It seems that when people do job without financial purpose they have the lowest effectiveness, and this probably applies to many other industries.'
+;
+
+footnote3
+'State and federal government owned hospitals are doing better than local and hospital district.'
+;
 *
 Methodology: Use WHERE to find the hospitals which have "below the average" 
 rating, and use COUNT to find which type of hospitals have the most numbers 
@@ -102,9 +129,9 @@ is not meaningful to analyze them.
 
 Possible Follow-up Steps: Eliminate the variables which have very few data.
 ;
-proc print noobs data=HospInfo_analytic_file_temp1;
-    id Hospital_Ownership;
-    var Effectiveness_comparison;
+proc freq data=HospInfo_analytic_file_temp1;
+    where Effectiveness_comparison='Below the National average';
+	tables Hospital_Ownership;
 run;
 title;
 footnote;
