@@ -217,23 +217,6 @@ data HospInfo_analytic_file_temp1;
     set HospInfo_analytic_file;
 run;
 
-proc means 
-    mean
-	noprint
-	data=HospInfo_analytic_file_temp1
-    ;
-
-    class 
-    	State
-    ;
-    var 
-    	Hospital_overall_rating
-    ;
-    output 
-    	out=HospInfo_analytic_file_temp2
-    ;
-run;
-
 proc sort 
 	data=HospInfo_analytic_file_temp1
     ;
