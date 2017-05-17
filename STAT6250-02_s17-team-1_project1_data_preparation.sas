@@ -209,9 +209,8 @@ run;
  
 
 *
-Use MEANS to calculate the average overall rating of every state, and use SORT 
-to sort the average overall ratings, which will be used as the part of the 
-data anlysis by RL
+Use SORT to sort the average overall ratings, which will be used as the part of 
+the data anlysis by RL
 ;
 data HospInfo_analytic_file_temp1;
     set HospInfo_analytic_file;
