@@ -107,6 +107,8 @@ which will be used as the part of the data anlysis by NL
 ;
 
 proc means 
+    mean
+	noprint
 	data=HospInfo_analytic_file
     ;
     class 
@@ -134,7 +136,9 @@ and use proc sort  of hospital_rating to order ratings from high to low,
 which will be used as the part of the data anlysis by NL
 ;
 
-proc means 
+proc means
+    mean
+	noprint
 	data=HospInfo_analytic_file
     ;
     class 
@@ -163,7 +167,7 @@ rating the ,which will be used as the part of the data anlysis by AA
 ;
 
 proc sort 
-	data=temp
+	data=HospInfo_analytic_file
     ;
     by 
     	descending Hospital_Type
@@ -175,7 +179,7 @@ improve their safety,which will be used as the part of the data anlysis by AA
 ;
 
 proc sort 
-	data=temp
+	data=HospInfo_analytic_file
     ;
     by 
     	descending Hospital_Ownership
@@ -187,8 +191,10 @@ Using proc means in the data to find the means for Hospital_overall_rating
 variable, which will be used as the part of the data anlysis by AA
 ;
 
-Proc means 
-	data= hospInfo_Updated
+Proc means
+	mean
+	noprint 
+	data=HospInfo_analytic_file
     ;
     Class 
     	Hospital_Type
@@ -207,24 +213,12 @@ Use MEANS to calculate the average overall rating of every state, and use SORT
 to sort the average overall ratings, which will be used as the part of the 
 data anlysis by RL
 ;
-
-proc means 
-	data=HospInfo_Updated
-    ;
-
-    class 
-    	State
-    ;
-    var 
-    	Hospital_overall_rating
-    ;
-    output 
-    	out=HospInfo_analytic_file_temp
-    ;
+data HospInfo_analytic_file_temp1;
+    set HospInfo_analytic_file;
 run;
 
 proc sort 
-	data=HospInfo_analytic_file_temp
+	data=HospInfo_analytic_file_temp1
     ;
     by 
     	descending State
@@ -237,7 +231,7 @@ part of the data analysis by RL
 ;
 
 proc sort 
-	data=HospInfo_analytic_file_temp
+	data=HospInfo_analytic_file_temp1
     ;
     by 
     	descending Hospital_Type
@@ -250,7 +244,7 @@ the part of the data analysis by RL
 ;
 
 proc sort 
-	data=HospInfo_analytic_file_temp
+	data=HospInfo_analytic_file_temp1
     ;
     by 
     	descending Hospital_Ownership
