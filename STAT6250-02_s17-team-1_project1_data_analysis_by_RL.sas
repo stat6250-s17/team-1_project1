@@ -44,12 +44,12 @@ footnote3
 'Additionally, it is meaningless to compare two states with two different observation numbers; therefore, more data are needed to make significant comparison.'
 ;
 *
-Methodology: Use PRINT to print the average overall ratings of each state.
+Methodology: Use PRINT SUMMARY to print the average overall ratings of each state.
 
 Limitations: It does not show the number of hospital counts in each state, so 
 some of the state's hospitals have not ratings available.
 
-Possible Follow-up Steps: Use COUNT function to counts the state numbers.
+Possible Follow-up Steps: Use FREQ function to counts the state numbers.
 ;
 proc summary data=HospInfo_analytic_file_temp1
     print;
@@ -83,7 +83,7 @@ footnote3
 ;
 *
 Methodology: Use WHERE to find the hospitals which have "below the average" 
-rating, and use COUNT to find which type of hospitals have the most numbers 
+rating, and use FREQ to find which type of hospitals have the most numbers 
 of this rating. 
 
 Limitations: The Children type hospitals have a small number of data, so it 
@@ -121,7 +121,7 @@ footnote3
 ;
 *
 Methodology: Use WHERE to find the hospitals which have "below the average" 
-rating, and use COUNT to find which type of hospitals have the most numbers 
+rating, and use FREQ to find which type of hospitals have the most numbers 
 of this rating. 
 
 Limitations: There are some onwership types which have very few data, so it 
