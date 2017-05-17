@@ -43,7 +43,7 @@ some of the state's hospitals have not ratings available.
 
 Possible Follow-up Steps: Use COUNT function to counts the state numbers.
 ;
-proc print noobs data=HospInfo_analytic_file_temp;
+proc print noobs data=HospInfo_analytic_file_temp2;
     id State;
     var Hospital_overall_rating;
 run;
@@ -73,7 +73,7 @@ may not be significant.
 Possible Follow-up Steps: Eliminate the Children type, and only analyze the 
 rest of the types.
 ;
-proc print noobs data=HospInfo_analytic_file_temp;
+proc print noobs data=HospInfo_analytic_file_temp1;
     id Hospital_Type;
     var Patient_experience_comparison;
 run;
@@ -102,7 +102,7 @@ is not meaningful to analyze them.
 
 Possible Follow-up Steps: Eliminate the variables which have very few data.
 ;
-proc print noobs data=HospInfo_analytic_file_temp;
+proc print noobs data=HospInfo_analytic_file_temp1;
     id Hospital_Ownership;
     var Effectiveness_comparison;
 run;
