@@ -136,7 +136,7 @@ and use proc sort  of hospital_rating to order ratings from high to low,
 which will be used as the part of the data anlysis by NL
 ;
 
-Data HospInfo_analytic_file1;
+Data HospInfo_analytic_file2;
 set HospInfo_analytic_file;
 proc means
     noprint
@@ -150,13 +150,13 @@ proc means
     	Hospital_overall_rating
     ;
     output 
-    	out=HospInfo_analytic_file_temp1
+    	out=HospInfo_analytic_file_temp2
     ;
 
 run;
 
 proc sort 
-	data=HospInfo_analytic_file_temp1(where=(_STAT_="MEAN"))
+	data=HospInfo_analytic_file_temp2(where=(_STAT_="MEAN"))
     ;
     by
     	descending Hospital_overall_rating
