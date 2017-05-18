@@ -107,8 +107,9 @@ which will be used as the part of the data anlysis by NL
 ;
 
 proc means 
+	noprint
 	data=HospInfo_analytic_file
-	  mean
+	mean
     ;
     class 
     	Hospital_Ownership
@@ -135,6 +136,8 @@ and use proc sort  of hospital_rating to order ratings from high to low,
 which will be used as the part of the data anlysis by NL
 ;
 
+Data HospInfo_analytic_file1;
+set HospInfo_analytic_file;
 proc means
     noprint
 	data=HospInfo_analytic_file
@@ -147,13 +150,13 @@ proc means
     	Hospital_overall_rating
     ;
     output 
-    	out=HospInfo_analytic_file_temp
+    	out=HospInfo_analytic_file_temp1
     ;
 
 run;
 
 proc sort 
-	data=HospInfo_analytic_file_temp(where=(_STAT_="MEAN"))
+	data=HospInfo_analytic_file_temp1(where=(_STAT_="MEAN"))
     ;
     by
     	descending Hospital_overall_rating
