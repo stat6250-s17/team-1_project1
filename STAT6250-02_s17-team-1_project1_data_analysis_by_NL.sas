@@ -93,6 +93,7 @@ footnote2
 footnote3
 'There is also large number of observations that do not have any values, which skews the results.'
 ;
+
 *
 Methodology: By using proc freq, we can see the number of hospitals that have a below the national 
 average rating and the percentage.
@@ -147,7 +148,7 @@ Possible Follow-up Steps:Could try to filter out US territories or figure out a 
 
 proc print 
     noobs 
-        data=HospInfo_analytic_file_temp1(obs=10);
+        data=HospInfo_analytic_file_temp2(obs=10);
     id 
         State
     ;
