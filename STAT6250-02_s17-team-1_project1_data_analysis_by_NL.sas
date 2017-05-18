@@ -52,9 +52,6 @@ proc print
         noobs 
         data=HospInfo_analytic_file_temp(obs=10)
     ;
-    id
-        Hospital_Ownership
-    ;
     var 
         Hospital_overall_rating
     ;
