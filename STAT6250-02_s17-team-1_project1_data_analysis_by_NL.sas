@@ -37,6 +37,16 @@ footnote1
 'Based on the output, Voluntary non-profit - Church have the highest overall rating of 2.88.'
 ;
 
+footnote2
+'There are only 344 observations for this type, other Hospital Ownership types with more observations
+have a lower overall mean.'
+;
+
+footnote3
+'Also since it is a Voluntary non-profit - Church, religion and the type of people who go here could
+have an impact on the overall scoring.'
+;
+
 *
 Methodology: Use PROC PRINT to print just the first ten observations from
 the temporary dataset created in the corresponding data-prep file.
@@ -73,6 +83,9 @@ footnote1
 'based on the output, only 7.09% of hospitals are below the national average for mortality.'
 ;
 
+footnote2
+'Factors could be there are less patients who are terminal or less mal practice in surgeries.'
+;
 *
 Methodology: By using proc freq, we can see the number of hospitals that have a below the national 
 average rating and the percentage.
@@ -105,6 +118,14 @@ an effect on the effectiveness of a hospital.'
 
 footnote1
 'Based on the output, New Hampshire has the higest overall rating.'
+;
+
+footnote2
+'The top three states are New Hampshire, Maine, and Rhode Island.'
+;
+
+footnote3
+'Geographical location could definitely be a significant factor since all three states are near each other.'
 ;
 
 *
