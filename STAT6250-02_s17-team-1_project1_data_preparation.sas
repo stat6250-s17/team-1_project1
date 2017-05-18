@@ -107,7 +107,6 @@ which will be used as the part of the data anlysis by NL
 ;
 
 proc means 
-    noprint
 	data=HospInfo_analytic_file
 	  mean
     ;
