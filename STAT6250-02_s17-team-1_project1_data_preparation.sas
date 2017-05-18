@@ -107,9 +107,8 @@ which will be used as the part of the data anlysis by NL
 ;
 
 proc means 
-    mean
-	noprint
 	data=HospInfo_analytic_file
+	  mean
     ;
     class 
     	Hospital_Ownership
@@ -137,9 +136,8 @@ which will be used as the part of the data anlysis by NL
 ;
 
 proc means
-    mean
-	noprint
 	data=HospInfo_analytic_file
+	mean
     ;
     class 
     	State
