@@ -59,8 +59,11 @@ type of hospital.
 ;
 
 proc print 
-        noobs 
-        data=HospInfo_analytic_file_temp(obs=10)
+        noobs
+        data=HospInfo_analytic_file_temp
+    ;
+    id 
+	Hospital_Ownership
     ;
     var 
         Hospital_overall_rating
@@ -72,7 +75,7 @@ footnote;
 
 
 title1
-'Research Question: How many hospitals have a 'below the national average' rating for mortality?'
+'Research Question: How many hospitals have a below the national average rating for mortality?'
 ;
 
 title2
@@ -85,6 +88,10 @@ footnote1
 
 footnote2
 'Factors could be there are less patients who are terminal or less mal practice in surgeries.'
+;
+
+footnote3
+'There is also large number of observations that do not have any values, which skews the results.'
 ;
 *
 Methodology: By using proc freq, we can see the number of hospitals that have a below the national 
@@ -140,7 +147,7 @@ Possible Follow-up Steps:Could try to filter out US territories or figure out a 
 
 proc print 
     noobs 
-        data=HospInfo_analytic_file_temp(obs=10);
+        data=HospInfo_analytic_file_temp1(obs=10);
     id 
         State
     ;
