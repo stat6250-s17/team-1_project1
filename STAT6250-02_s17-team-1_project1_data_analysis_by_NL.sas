@@ -51,15 +51,15 @@ have an impact on the overall scoring.'
 Methodology: Use PROC PRINT to print just the first ten observations from
 the temporary dataset created in the corresponding data-prep file.
 
-Limitations: The values will not account for the proportion of each hospital type or the hospitals
-that do not have the available data, which is set to 0.
+Limitations: The values will not account for the proportion of each hospital 
+type or the hospitals that do not have the available data, which is set to 0.
 
-Possible Follow-up Steps: Try a count function for number of each hospital type and compare 0s of each
-type of hospital.
+Possible Follow-up Steps: Try a count function for number of each hospital type
+and compare 0s of each type of hospital.
 ;
 
 proc print 
-        noobs
+    noobs
         data=HospInfo_analytic_file_temp
     ;
     id 
@@ -95,16 +95,17 @@ footnote3
 ;
 
 *
-Methodology: By using proc freq, we can see the number of hospitals that have a below the national 
-average rating and the percentage.
+Methodology: By using proc freq, we can see the number of hospitals that have a
+below the national average rating and the percentage.
 
-Limitations: There are hospitals that don't have available data, so the results could be skewed.
+Limitations: There are hospitals that don't have available data, so the results
+could be skewed.
 
 Possible Follow-up Steps: could try to subset of hospital type.
 ;
 
 proc freq 
-        data=HospInfo_analytic_file
+    data=HospInfo_analytic_file
     ; 
     tables 
         Mortality_comparison
@@ -140,15 +141,17 @@ footnote3
 Methodology: Use PROC PRINT to print just the first ten observations from
 the temporary dataset created in the corresponding data-prep file.
 
-Limitations: Does not take into account porportion of number of hospitals in each state. Data also includes
-US territories.
+Limitations: Does not take into account porportion of number of hospitals in 
+each state. Data also includes US territories.
 
-Possible Follow-up Steps:Could try to filter out US territories or figure out a ratio.
+Possible Follow-up Steps:Could try to filter out US territories or figure out
+a ratio.
 ;
 
 proc print 
     noobs 
-        data=HospInfo_analytic_file_temp2(obs=10);
+        data=HospInfo_analytic_file_temp2(obs=10)
+    ;
     id 
         State
     ;
